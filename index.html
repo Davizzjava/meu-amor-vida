@@ -5,27 +5,71 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Para o Meu Amor ❤️</title>
     <style>
-        /* CSS INTEGRADO */
         body {
             margin: 0;
             padding: 0;
+            background: #ff9a9e; /* Fundo sólido caso o gradient falhe */
             background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%);
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: sans-serif;
             height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
             overflow: hidden;
         }
-
         .glass-card {
-            background: rgba(255, 255, 255, 0.25);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            border-radius: 20px;
-            padding: 40px;
+            background: white;
+            padding: 30px;
             text-align: center;
-            border: 1px solid rgba(255, 255, 255, 0.3);
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-            z-index: 10;
-            max-width:
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            z-index: 100;
+            width: 80%;
+            max-width: 300px;
+            position: relative;
+        }
+        h1 { color: #d63384; font-size: 1.5rem; }
+        button {
+            background: #ff4d6d;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 20px;
+            cursor: pointer;
+        }
+        .heart {
+            position: absolute;
+            color: rgba(255, 77, 109, 0.7);
+            font-size: 20px;
+            animation: float 5s linear infinite;
+        }
+        @keyframes float {
+            0% { transform: translateY(110vh); opacity: 1; }
+            100% { transform: translateY(-10vh); opacity: 0; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="glass-card">
+        <h1>Para você ❤️</h1>
+        <p>Você é a pessoa mais especial do mundo!</p>
+        <button onclick="alert('Eu te amo demais!')">Clique aqui</button>
+    </div>
+
+    <div id="coracoes-bg"></div>
+
+    <script>
+        function criarCoracao() {
+            const heart = document.createElement('div');
+            heart.classList.add('heart');
+            heart.innerHTML = '❤️';
+            heart.style.left = Math.random() * 100 + 'vw';
+            heart.style.animationDuration = (Math.random() * 3 + 2) + 's';
+            document.getElementById('coracoes-bg').appendChild(heart);
+            setTimeout(() => { heart.remove(); }, 5000);
+        }
+        setInterval(criarCoracao, 400);
+    </script>
+</body>
+</html>
